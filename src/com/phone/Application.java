@@ -1,5 +1,6 @@
 package com.phone;
 
+import java.util.Arrays;
 /*Simon Mwangi
  * Phone book project
  * Allows you to Add new record, delete a record using phone number and search for record via names. city state or phone number 
@@ -11,10 +12,16 @@ public class Application {
 	static Contact[] arrayContacts;
 	static Contact newContact;
 	static int choice;
-	static String firstName, lastName, street, city, state, zip, phoneNum;
+	static String firstName, middleName, lastName, street, city, state, zip, phoneNum;
 
 	public static void main(String[] args) {
-		String firstName, lastName, middle, street, city, state, zip, middleName;
+
+		startProgram();
+	}
+
+	// Start and run program
+	public static void startProgram() {
+		// firstName, middleName, lastName, phoneNum, street, city, state, zip
 
 		int option1;
 		// loop till choice is 0
@@ -59,6 +66,7 @@ public class Application {
 
 				break;
 			case 3:
+				// delete contatcs
 				System.out.println("Enter Phone number to delete");
 				String cellnumb = input.next();
 				int index = searchNumb(cellnumb);
@@ -69,6 +77,7 @@ public class Application {
 
 				break;
 			case 4:
+				// display all contacts
 				if (arrayContacts != null) {
 					for (int i = 0; i < arrayContacts.length; i++) {
 						printContact(i);
@@ -77,9 +86,23 @@ public class Application {
 
 					System.out.println("Sorry no contacts found");
 				}
-				// break;
+				break;
 			case 5:
-				// break;
+				// Update Record
+				System.out.println("Enter Phone number to Update");
+				String cellToUpdate = input.next();
+				int index1 = searchNumb(cellToUpdate);
+
+				if (index1 >= 0) {
+					int optionOne = updateMenu();
+					System.out.println("Type new record below");
+					input.nextLine();
+					String updatename = input.nextLine();
+					updateRecord(index1, optionOne, updatename);
+
+				}
+
+				break;
 			case 6:
 				// break;
 			default:
@@ -89,6 +112,7 @@ public class Application {
 		} while (option1 != 0);
 
 		System.out.println("Good Bye: program Terminated");
+
 	}
 
 	// search phone number and return idex number
@@ -114,6 +138,8 @@ public class Application {
 		System.out.println("2: Search for existing Entry");
 		System.out.println("3: Delete Contact");
 		System.out.println("4: Display All Contacts");
+		System.out.println("5: Update Record");
+		System.out.println("6: Sort Record");
 		System.out.println("0 To Exit press.");
 		int option = input.nextInt();
 		return option;
@@ -123,11 +149,25 @@ public class Application {
 	// Display search menu
 	public static int searchMenu() {
 
-		System.out.println("1: Search by First Name");
-		System.out.println("2: Search by Last Name");
-		System.out.println("3: Search by State");
-		System.out.println("4: Search by city");
-		System.out.println("5: Search by Phone Number");
+		System.out.println("1: Search By First Name");
+		System.out.println("2: Search By Last Name");
+		System.out.println("3: Search By State");
+		System.out.println("4: Search By city");
+		System.out.println("5: Search By Phone Number");
+		choice = input.nextInt();
+
+		return choice;
+
+	}
+
+	// update menu display
+	public static int updateMenu() {
+
+		System.out.println("1: Update First Name");
+		System.out.println("2: Update Last Name");
+		System.out.println("3: Update Street");
+		System.out.println("4: Update city");
+		System.out.println("5: Update Phone Number");
 		choice = input.nextInt();
 
 		return choice;
@@ -171,9 +211,6 @@ public class Application {
 	}
 
 	// print contact
-	// arrayContacts[s].getFirstName() +" "+ arrayContacts[s].getLastName() + " " +
-	// arrayContacts[s].getCell() getStreet()+"
-	// "+arrayContacts[s].address.getCity()+arrayContacts[s].address.getState()+arrayContacts[s].address.getZip()
 	public static void printContact(int s) {
 		System.out.println(arrayContacts[s] + " " + arrayContacts[s].address);
 	}
@@ -228,6 +265,41 @@ public class Application {
 		}
 
 		arrayContacts = temp;
+	}
+
+	public static void updateRecord(int index, int caseChoice, String newrec) {
+		// System.out.println("1: Update First Name");
+		// System.out.println("2: Update Last Name");
+		// System.out.println("3: Update State");
+		// System.out.println("4: Update city");
+		// System.out.println("5: Update Phone Number");
+
+		switch (caseChoice) {
+		case 1:
+			arrayContacts[index].setFirstName(newrec);
+			break;
+		case 2:
+			arrayContacts[index].setLastName(newrec);
+			break;
+		case 3:
+			arrayContacts[index].address.setStreet(newrec);
+			break;
+		case 4:
+			arrayContacts[index].address.setCity(newrec);
+			break;
+		case 5:
+			arrayContacts[index].setCell(newrec);
+			break;
+
+		}
+
+	}
+
+	public static void sort(int i) {
+
+		// Arrays.sort(arrayContacts[i].getFirstName());
+		// Arrays.sort(Contact);
+
 	}
 
 }
