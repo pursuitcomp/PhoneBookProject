@@ -1,5 +1,8 @@
 package com.phone;
-
+/*
+ * Simon Mwangi
+ * Phone book Project
+ * */
 import java.util.Arrays;
 /*Simon Mwangi
  * Phone book project
@@ -22,11 +25,7 @@ public class Application {
 	// Start and run program
 	public static void startProgram() {
 		// firstName, middleName, lastName, phoneNum, street, city, state, zip
-		createContact("xmos", "Mwangi", "j", "4236526765", "1533 bavona dr", "st louis", "mo", "76353");
-		createContact("Simon", "Mwangi", "j", "4236526765", "1533 bavona dr", "st louis", "mo", "76353");
-		createContact("Zeddi", "Mwangi", "j", "4236526765", "1533 bavona dr", "st louis", "mo", "76353");
-		createContact("Alex", "Mwangi", "j", "4236526765", "1533 bavona dr", "st louis", "mo", "76353");
-
+		
 		int option1;
 		// loop till choice is 0
 		do {
@@ -300,12 +299,21 @@ public class Application {
 		}
 
 	}
-//sort throught the record
+//sort the record by ascending order
 	public static void sort() {
 		Contact[] temp = new Contact[1];
 
 		for (int i = 0; i < arrayContacts.length; i++) {
 			for (int j = i + 1; j < arrayContacts.length; j++) {
+				if(arrayContacts[i].getFirstName().compareTo(arrayContacts[j].getFirstName())>0) {
+					temp[0] = arrayContacts[i];
+					arrayContacts[i] = arrayContacts[j];
+					arrayContacts[j] = temp[0];
+					
+				}
+				
+				/*
+				 //second sort
 				if (arrayContacts[i].getFirstName().charAt(0) < arrayContacts[j].getFirstName().charAt(0)) {
 
 				} else {
@@ -313,10 +321,9 @@ public class Application {
 					arrayContacts[i] = arrayContacts[j];
 					arrayContacts[j] = temp[0];
 				}
+				*/
 			}
-
 		}
-
 	}
 
 }
