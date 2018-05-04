@@ -9,9 +9,9 @@ public class Address {
 
 	// Contractor for address
 	public Address(String street, String city, String state, String zip) {
-		this.street = street;
-		City = city;
-		this.state = state;
+		this.street = street.toLowerCase();
+		City = city.toLowerCase();
+		this.state = state.toLowerCase();
 		this.zip = zip;
 	}
 

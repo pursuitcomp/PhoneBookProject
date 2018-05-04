@@ -1,8 +1,35 @@
 package com.phone;
 /*
- * Simon Mwangi
- * Phone book Project
- * */
+ Write a program to simulate the actions of a phonebook.
+Your program should be able to :
+Add new entries 
+Search for an existing entry
+Search by first name *
+Search by last name *
+Search by full name *note name is not unique therefore the result should be an array of Person Objects.
+Search by telephone number
+Search by city or state
+Delete a record for a given telephone number
+Update a record for a given telephone number
+Show all records in asc order
+An option to exit the program 
+Your program should operate on the console. It should display all the choices when the program loads. Eg 1. Add new record
+    2. Delete a record
+               Etc.. where 1 representing the action for adding a record and 2 representing the action
+               for deleting a record.
+Your program should run until the user selects the exit option. 
+Your program should have a minimum of 2 classes a Person class, an Address  class.
+
+Test case :
+John Doe, 114 Market St, St Louis, MO, 63403, 6366435698
+John E Doe, 324 Main St, St Charles, MO,63303, 8475390126
+John Michael West Doe, 574 Pole ave, St. Peters, MO, 63333, 5628592375
+
+Searching for John should return a list of all 3 records above, displaying the telephone number in this order (636)-453-8563.
+
+Optional add additional features to your program, for storing cell, home, work and fax numbers. 
+Also features for storing events like birthday, anniversary, email… etc   
+ */
 import java.util.Arrays;
 /*Simon Mwangi
  * Phone book project
@@ -25,6 +52,9 @@ public class Application {
 	// Start and run program
 	public static void startProgram() {
 		// firstName, middleName, lastName, phoneNum, street, city, state, zip
+		createContact("King","mango","pineapple","9136020705","65r231", "Kansas","MO","64110");
+		createContact("vamshi"," ","rajarikam","9136020705", "46674", "Kansas", "MO","64110");
+		createContact("apple"," ",  "man" ,"8712687622","jhbajsx","asxdas","aas"," 87681");
 		
 		int option1;
 		// loop till choice is 0
@@ -72,10 +102,11 @@ public class Application {
 				// delete contatcs
 				System.out.println("Enter Phone number to delete");
 				String cellnumb = input.next();
+				
 				int index = searchNumb(cellnumb);
 				if (index >= 0) {
 					deleteContact(index);
-					System.out.println("1 contact deleted");
+					System.out.println("contact deleted");
 				}
 
 				break;
@@ -271,7 +302,7 @@ public class Application {
 
 		arrayContacts = temp;
 	}
-
+//update record
 	public static void updateRecord(int index, int caseChoice, String newrec) {
 		// System.out.println("1: Update First Name");
 		// System.out.println("2: Update Last Name");
