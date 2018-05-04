@@ -307,6 +307,8 @@ public class Application {
 		// System.out.println("4: Update city");
 		// System.out.println("5: Update Phone Number");
 
+		newrec=newrec.toLowerCase();
+		
 		switch (caseChoice) {
 		case 1:
 			arrayContacts[index].setFirstName(newrec);
