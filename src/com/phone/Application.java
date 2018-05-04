@@ -52,10 +52,7 @@ public class Application {
 	// Start and run program
 	public static void startProgram() {
 		// firstName, middleName, lastName, phoneNum, street, city, state, zip
-		createContact("King","mango","pineapple","9136020705","65r231", "Kansas","MO","64110");
-		createContact("vamshi"," ","rajarikam","9136020705", "46674", "Kansas", "MO","64110");
-		createContact("apple"," ",  "man" ,"8712687622","jhbajsx","asxdas","aas"," 87681");
-		
+
 		int option1;
 		// loop till choice is 0
 		do {
